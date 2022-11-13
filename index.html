@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+        <h1 class="header">Rock Paper Scissors</h1>
+      <section class="player-and-computer player">
+        <h2>Player</h2>
+        <p class="score score-player">☆☆☆</p>
+        <img class="chosen-rps chosen-rps-player" src="img/img0.png" alt="Player Winner" />
+        <div class="btn-rps-divblock">
+          <img class="btn-rps btn-rock" src="img/img0.png" alt="Rock" />
+          <img class="btn-rps btn-paper btn-format" src="img/img1.png" alt="Paper" />
+          <img class="btn-rps btn-scissors" src="img/img2.png" alt="Scissors" />
+        </div>
+      </section>
+      <section class="player-and-computer computer">
+        <h2>Computer</h2>
+        <p class="score score-computer">☆☆☆</p>
+        <img class="chosen-rps chosen-rps-computer" src="img/img0.png" alt="Rock" />
+        
+        <h3>Game mode</h3>
+        <div>
+            <button class="btn btn-gamemode btn-pressed btn-upto3">Up to 3 &#9733</button>
+            <button class="btn btn-gamemode btn-upto5">Up to 5 &#9733</button>
+            <button class="btn btn-gamemode btn-infinity-score">Infinite Score</button>
+        </div>
+        <h3>Difficulty</h3>
+        <div>
+          <button class="btn btn-difficulty btn-easy">Easy</button>
+          <button class="btn btn-difficulty  btn-pressed btn-medium">Medium</button>
+          <button class="btn btn-difficulty btn-hard">Hard</button>
+        </div>
+    
+      </section>
+      <!-- Separate elements -->
+      <button class="btn btn-restart-rotating"><iconify-icon icon="mdi:restart" width="55"></iconify-icon></button>
+      <h2 class="status-message"></h2>
+      <h2 class="status-tie"></h2>
+    </main>
+    
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

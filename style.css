@@ -1,0 +1,339 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  color: #333;
+  background-image: linear-gradient(to top left, #c52dda 15%, #030d63 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  position: relative;
+  width: 100rem;
+  height: 66rem;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(200px);
+  filter: blur();
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+@media screen and (max-width: 485px) {
+  main {
+    overflow: visible;
+  }
+}
+
+@media screen and (max-height: 985px) {
+  main {
+    overflow: visible;
+  }
+}
+
+.header {
+  flex: 100%;
+  padding: 2rem 0 2rem 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #900dc4;
+  transition: text-shadow 0.5s, box-shadow 0.5s;
+}
+
+.header:hover {
+  text-shadow: -2px -2px 10px #fff, 2px 2px 10px #fff, 0 0 20px #f10,
+    0 0 40px #f10, 0 0 60px #f10, 0 0 80px #f10, 0 0 100px #f10;
+
+  box-shadow: 0 0 5px #fff, inset 0 0 5px #fff, 0 0 20px #08f,
+    inset 0 0 20px #08f, 0 0 40px #08f, inset 0 0 40px #08f;
+}
+
+.player-and-computer {
+  flex: 50%;
+  padding: 4rem 3rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.75s;
+}
+.player {
+  background-color: rgba(110, 151, 226, 0.2);
+}
+
+.computer {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+  font-size: 4.5rem;
+  box-shadow: 0 2rem 5rem #c885e2;
+  filter: contrast(110%);
+}
+h2 {
+  font-size: 4rem;
+  margin: 0;
+}
+h3 {
+  font-size: 2.5rem;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+.score {
+  font-size: 50px;
+  color: gold;
+}
+
+.status-message {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 48%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.status-tie {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 32%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: rgb(170, 56, 3);
+  font-size: 3rem;
+}
+
+.status-tie-player-win {
+  transform: translate(-210px, -110px);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.status-tie-computer-win {
+  transform: translate(210px, -100px);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.chosen-rps {
+  margin-bottom: 3.5rem;
+  margin-top: 2rem;
+  width: 15rem;
+  border-radius: 50%;
+}
+
+.btn-rps {
+  width: 10rem;
+  margin: 0 1.5rem;
+}
+
+.btn-rps:hover {
+  border-radius: 50%;
+  border-color: rgb(50, 247, 0);
+  border-width: 0.3rem;
+  border-style: solid;
+  transform: scale(1.2);
+}
+
+.btn-rps:active {
+  border-style: solid;
+  border-width: 1rem;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.btn-rps-divblock {
+  --border-radius: 5rem;
+  --border-size: 0.5rem;
+  --border-bg: conic-gradient(#00ffff, #0000ff, #ee82ee, aqua);
+  --padding: 1rem;
+
+  position: relative;
+  overflow: hidden;
+  font-size: 1rem;
+  padding: calc(var(--padding) + var(--border-size));
+  border-radius: var(--border-radius);
+  display: inline-block;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  opacity: 1;
+}
+.btn-rps-divblock::before {
+  content: "";
+  display: block;
+  background: var(--border-bg);
+  width: calc(100% * 1.41421356237);
+  padding-bottom: calc(100% * 1.41421356237);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 0.5s;
+  -webkit-animation: spin 5s linear infinite;
+  animation: spin 5s linear infinite;
+}
+.btn-rps-divblock::after {
+  content: "";
+  position: absolute;
+  top: var(--border-size);
+  right: var(--border-size);
+  bottom: var(--border-size);
+  left: var(--border-size);
+  background: rgba(191, 123, 218, 0.8);
+  z-index: -1;
+  border-radius: calc(var(--border-radius) - var(--border-size));
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.btn-rps-divblock-visibility::before {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.btn-rps-divblock-visibility::after {
+  opacity: 1;
+}
+
+.btn-rps-gameover {
+  opacity: 0;
+  transform: translateY(500%);
+  transition: 1s;
+}
+
+.btn {
+  width: 10rem;
+  height: 4rem;
+  border-radius: 10px;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  border-width: 0px;
+  opacity: 0.8;
+}
+
+.btn:hover {
+  box-shadow: 0 0rem 1rem rgb(50, 247, 0);
+  border-color: rgb(50, 247, 0);
+  border-width: 2px;
+  border-style: solid;
+}
+
+.btn-pressed {
+  background-color: rgb(50, 247, 0);
+}
+
+.btn:active {
+  transform: translateY(2px);
+  border-style: inset;
+  transition: 0.5s;
+  background-color: rgb(190, 248, 175);
+}
+
+/* Animated Restart button */
+@-webkit-keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.btn-restart-rotating {
+  --border-bg: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+  font-size: 0rem;
+  padding: 0px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 17.3%;
+  width: 8rem;
+  height: 8rem;
+  text-align: center;
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom, #900dc4 5%, #1f7cf5 100%);
+  color: black;
+}
+.btn-restart-rotating::before {
+  content: "";
+  display: block;
+  background: var(--border-bg);
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  z-index: -2;
+  transition: width 1s, height 1s ease-out;
+  -webkit-animation: spin 5s linear infinite;
+  animation: spin 5s linear infinite;
+}
+.btn-restart-rotating::after {
+  content: "";
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom, #900dc4 5%, #1f7cf5 100%);
+  z-index: -1;
+}
+.btn-restart-rotating:hover {
+  border-style: solid;
+}
+
+/*  Regular restart */
+.btn-restart {
+  color: rgb(50, 247, 0);
+  transform: rotate(360deg);
+  transition: color 1s, transform 0.5s ease-in;
+}
+.btn-restart::before {
+  width: 8rem;
+  height: 8rem;
+  transition: width 1s, height 1s;
+}
